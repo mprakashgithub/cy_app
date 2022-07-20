@@ -1,39 +1,14 @@
-// import 'dart:convert';
-
-// import 'package:cy_app/model/welcome_model.dart';
-// import 'package:http/http.dart' as http;
-
-// class WelcomeRepo {
-//   Future<WelcomeModel?> getBankData() async {
-//     try {
-//       var request = http.Request(
-//           'GET', Uri.parse('https://ifsc.razorpay.com/ICIC0000816'));
-//       http.StreamedResponse response = await request.send();
-//       if (response.statusCode == 200) {
-//         var data = await response.stream.bytesToString();
-//         var map = json.decode(data);
-//         var model = WelcomeModel.fromJson(map);
-//         return model;
-//       } else {
-//         print(response.reasonPhrase);
-//       }
-//     } catch (e) {
-//       throw (e);
-//     }
-//   }
-// }
-
 import 'dart:convert';
 
 import 'package:cy_app/model/welcome_model.dart';
+import 'package:cy_app/repository/base_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class WelcomeRepo {
   Future<WelcomeModel?> getBankData() async {
     try {
-      var request = http.Request(
-          'GET', Uri.parse('https://ifsc.razorpay.com/ICIC0000816'));
+      var request = http.Request('GET', BaseRepo.baseUrl);
       http.StreamedResponse response = await request.send();
       if (response.statusCode == 200) {
         var data = await response.stream.bytesToString();
