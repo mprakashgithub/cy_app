@@ -11,13 +11,14 @@ class WelcomePage extends StatefulWidget {
 
 class WelcomePageState extends State<WelcomePage> {
   double? _height;
+  late String ifscValue;
   late WelcomeProvider welcomeProvider;
 
   @override
   void initState() {
     super.initState();
     welcomeProvider = Provider.of<WelcomeProvider>(context, listen: false);
-    welcomeProvider.getBankApi();
+    // welcomeProvider.getBankApi();
   }
 
   @override
@@ -32,7 +33,7 @@ class WelcomePageState extends State<WelcomePage> {
             child: !provider.isLoaded
                 ? const Center(child: CircularProgressIndicator())
                 : Center(
-                    child: Text("Welcome to ${provider.model!.bANK} "),
+                    child: Text("Welcome to ${provider.bankName} "),
                   )),
       );
     }));

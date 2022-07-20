@@ -4,11 +4,11 @@ import 'package:flutter/cupertino.dart';
 
 class WelcomeProvider with ChangeNotifier {
   WelcomeModel? model;
-
+  String? bankName;
   bool isLoaded = false;
 
-  Future<void> getBankApi() async {
-    model = await WelcomeRepo().getBankData();
+  Future<void> getBankApi(String ifsc) async {
+    model = await WelcomeRepo().getBankData(ifsc);
     setIsLoaded(true);
     notifyListeners();
   }
@@ -19,6 +19,11 @@ class WelcomeProvider with ChangeNotifier {
 
   void setIsLoaded(bool value) {
     isLoaded = value;
+    notifyListeners();
+  }
+
+  void setBankName(String value) {
+    bankName = value;
     notifyListeners();
   }
 }

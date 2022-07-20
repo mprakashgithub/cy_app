@@ -1,5 +1,5 @@
 import 'package:cy_app/provider/welcome_provider.dart';
-import 'package:cy_app/view/welcome_page.dart';
+import 'package:cy_app/view/enter_code.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const WelcomePage(),
+        home: const EnterCode(),
       ),
     );
   }
